@@ -22,13 +22,13 @@ val neg: ((String) => Boolean) => (String) => Boolean = {
 }
 
 //Neg in method syntax
-def negMethod(f: (String) => Boolean): (String) => Boolean = {
-  (x: String) => !f(x)
+def negMethod[E](f: (E) => Boolean): (E) => Boolean = {
+  (x: E) => !f(x)
 }
 
 @main def testMethod() = {
   val empty: String => Boolean = _ == ""
-  val notEmpty = neg(empty)
+  val notEmpty = negMethod(empty)
   println(notEmpty("foo"))
   println(notEmpty(""))
   println(notEmpty("foo") && !notEmpty(""))
