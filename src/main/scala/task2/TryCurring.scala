@@ -1,4 +1,4 @@
-package it.unibo.pps.u02
+package task2
 
 import scala.util.Try
 
