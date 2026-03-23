@@ -26,6 +26,18 @@ def negMethod[E](f: (E) => Boolean): (E) => Boolean = {
   (x: E) => !f(x)
 }
 
+//Preidcate in val syntax and currying
+val p1: (Int) => (Int) => (Int) => Boolean = (x: Int) => (y: Int) => (z: Int) => x < y && y < z
+
+//Predicate in val syntax not curried
+val p2: (Int, Int, Int) => Boolean = (x: Int, y: Int, z: Int) => x < y && y < z
+
+//Predicate in def syntax and currying
+def p3(x: Int)(y: Int)(z: Int): Boolean = x < y && y < z
+
+//Predicate in def syntax not curried
+def p4(x: Int, y: Int, z: Int): Boolean = x < y && y < z
+
 @main def testMethod() = {
   val empty: String => Boolean = _ == ""
   val notEmpty = negMethod(empty)
