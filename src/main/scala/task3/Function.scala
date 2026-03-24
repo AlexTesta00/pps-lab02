@@ -45,6 +45,10 @@ def p4(x: Int, y: Int, z: Int): Boolean = x < y && y < z
 //Function compose
 def compose[A,B,C](f: (B) => C, g: (A) => B)(x: A): C = f(g(x))
 
+//Exercise 6
+
+def composeThree[A,B,C,D](f: (C) => D, g: (B) => C, h: (A) => B)(x: A): A => D = (x: A) => f(compose(g, h)(x))
+
 @main def testMethod(): Unit = {
   val empty: String => Boolean = _ == ""
   val notEmpty = negMethod(empty)
@@ -55,4 +59,8 @@ def compose[A,B,C](f: (B) => C, g: (A) => B)(x: A): C = f(g(x))
 
 @main def testCompose(): Unit = {
   println(compose[Int, Int, Int](_ - 1, _ * 2)(5))
+}
+
+@main def testComposeThree(): Unit = {
+  println(composeThree((s: String) => s + "!", (n: Int) => n.toString, (n: Int) => n * 2)(3)(3))
 }
