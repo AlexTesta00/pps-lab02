@@ -16,5 +16,15 @@ def power(base: Double, exponent: Int): Double =
 }
 
 //Exercise 8
+def reverseNumber(n: Int): Int =
+  @tailrec
+  def _reverseNumber(n: Int, acc: Int): Int = n match
+    case 0 => acc
+    case _ => _reverseNumber(n / 10, acc * 10 + n % 10)
+  _reverseNumber(n, 0)
+
+@main def testReverseNumber(): Unit = {
+  println((reverseNumber(12345)))
+}
 
 //Exercise 9
