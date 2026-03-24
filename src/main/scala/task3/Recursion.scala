@@ -26,5 +26,3 @@ def reverseNumber(n: Int): Int =
 @main def testReverseNumber(): Unit = {
   println((reverseNumber(12345)))
 }
-
-//Exercise 9
