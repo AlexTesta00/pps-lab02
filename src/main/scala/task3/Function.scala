@@ -26,6 +26,8 @@ def negMethod[E](f: (E) => Boolean): (E) => Boolean = {
   (x: E) => !f(x)
 }
 
+//Exercise 4
+
 //Preidcate in val syntax and currying
 val p1: (Int) => (Int) => (Int) => Boolean = (x: Int) => (y: Int) => (z: Int) => x < y && y < z
 
@@ -38,10 +40,19 @@ def p3(x: Int)(y: Int)(z: Int): Boolean = x < y && y < z
 //Predicate in def syntax not curried
 def p4(x: Int, y: Int, z: Int): Boolean = x < y && y < z
 
-@main def testMethod() = {
+//Exercise 5
+
+//Function compose
+def compose[A,B,C](f: (B) => C, g: (A) => B)(x: A): C = f(g(x))
+
+@main def testMethod(): Unit = {
   val empty: String => Boolean = _ == ""
   val notEmpty = negMethod(empty)
   println(notEmpty("foo"))
   println(notEmpty(""))
   println(notEmpty("foo") && !notEmpty(""))
+}
+
+@main def testCompose(): Unit = {
+  println(compose[Int, Int, Int](_ - 1, _ * 2)(5))
 }
